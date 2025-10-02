@@ -1,65 +1,37 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import ProjectCard from "@/components/project-card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { useState } from "react";
+import ProjectCard from "@/components/project-card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function PortfolioPage() {
-  const [activeTab, setActiveTab] = useState("own")
+  const [activeTab, setActiveTab] = useState("own");
 
   const ownProjects = [
     {
-      title: "DevDanny Portfolio",
-      description: "Moderne Portfolio-Webseite mit Next.js und animierten Effekten",
-      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      title: "Iconfy",
+      description:
+        "Der einfachste Weg, perfekte App-Icons zu erstellen. Von Entwicklern für Entwickler.",
+      technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Clerk"],
     },
-    {
-      title: "Task Manager Pro",
-      description: "Vollständige Task-Management-Anwendung mit Echtzeit-Updates",
-      technologies: ["Next.js", "Supabase", "PostgreSQL", "Tailwind CSS"],
-    },
-    {
-      title: "E-Commerce Platform",
-      description: "Skalierbare E-Commerce-Lösung mit Stripe-Integration",
-      technologies: ["Next.js", "Stripe", "Prisma", "PostgreSQL"],
-    },
-  ]
+  ];
 
   const clientProjects = [
     {
-      title: "Restaurant Website",
-      description: "Moderne Restaurant-Webseite mit Online-Reservierungssystem",
-      technologies: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+      title: "Barbara Rembisz Autoaufbereitung | Hamburg",
+      description:
+        "Professionelle Autoaufbereitung in Hamburg – Glanz, Sauberkeit und Werterhalt mit Leidenschaft und Präzision.",
+      technologies: ["Next.js", "React", "Tailwind CSS", "Nodemailer"],
     },
-    {
-      title: "Fitness Studio App",
-      description: "Mitgliederverwaltung und Kursbuchungssystem",
-      technologies: ["Next.js", "Supabase", "TypeScript", "Stripe"],
-    },
-    {
-      title: "Corporate Website",
-      description: "Unternehmenswebseite mit CMS und Blog-Funktionalität",
-      technologies: ["Next.js", "Sanity CMS", "React", "Tailwind CSS"],
-    },
-  ]
+  ];
 
   const partnerships = [
     {
-      title: "Marketing Agency Collaboration",
-      description: "Entwicklung von Landing Pages für verschiedene Kampagnen",
-      technologies: ["Next.js", "React", "Framer Motion", "Tailwind CSS"],
+      title: "Protein Crew",
+      description: "Kochrezepte der Influencer",
+      technologies: ["Next.js", "React", "MDX", "Tailwind CSS", "Node.js"],
     },
-    {
-      title: "Design Studio Partnership",
-      description: "Umsetzung von Design-Konzepten in funktionale Webseiten",
-      technologies: ["Next.js", "TypeScript", "GSAP", "Tailwind CSS"],
-    },
-    {
-      title: "Tech Startup Collaboration",
-      description: "MVP-Entwicklung und technische Beratung",
-      technologies: ["Next.js", "Supabase", "TypeScript", "Vercel"],
-    },
-  ]
+  ];
 
   return (
     <div className="pt-24 pb-20">
@@ -67,10 +39,13 @@ export default function PortfolioPage() {
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">
-            <span className="bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">Portfolio</span>
+            <span className="bg-gradient-to-r from-primary to-purple-400 bg-clip-text text-transparent">
+              Portfolio
+            </span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Eine Auswahl meiner Projekte - von eigenen Entwicklungen über Kundenaufträge bis hin zu Partnerschaften.
+            Eine Auswahl meiner Projekte - von eigenen Entwicklungen über
+            Kundenaufträge bis hin zu Partnerschaften.
           </p>
         </div>
 
@@ -108,5 +83,5 @@ export default function PortfolioPage() {
         </Tabs>
       </div>
     </div>
-  )
+  );
 }
