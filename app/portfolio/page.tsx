@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import ProjectCard from "@/components/project-card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -13,6 +12,17 @@ export default function PortfolioPage() {
       description:
         "Der einfachste Weg, perfekte App-Icons zu erstellen. Von Entwicklern für Entwickler.",
       technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Clerk"],
+   href: "https://www.iconfy.de",
+      image: "/iconfy.png"
+
+    },
+ {
+      title: "Startseite",
+      description:
+        "Willkommen auf der Startseite von DevDanny – entdecke innovative Entwickler-Tools, spannende Projekte und Ressourcen rund um Webentwicklung, Marketing & SEO.",
+   technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "SCSS", "Nodemailer"],
+   href: "https://startseite.devdanny.de",
+      image: "/startseite-devdanny.png"
     },
   ];
 
@@ -22,6 +32,9 @@ export default function PortfolioPage() {
       description:
         "Professionelle Autoaufbereitung in Hamburg – Glanz, Sauberkeit und Werterhalt mit Leidenschaft und Präzision.",
       technologies: ["Next.js", "React", "Tailwind CSS", "Nodemailer"],
+   href: "https://www.autoaufbereitung-rembisz.de",
+      image: "/autoaufbereitung-rembisz.png"
+
     },
   ];
 

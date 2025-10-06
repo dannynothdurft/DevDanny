@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import Link from 'next/link'
 import { ExternalLink } from "lucide-react"
 
 interface ProjectCardProps {
@@ -8,9 +8,10 @@ interface ProjectCardProps {
   description: string
   technologies: string[]
   image?: string
+  href?: string
 }
 
-export default function ProjectCard({ title, description, technologies, image }: ProjectCardProps) {
+export default function ProjectCard({ title, description, technologies, image, href }: ProjectCardProps) {
   return (
     <Card className="overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover-glow-purple group">
       <div className="aspect-video bg-gradient-to-br from-primary/20 to-purple-500/20 relative overflow-hidden">
@@ -36,10 +37,10 @@ export default function ProjectCard({ title, description, technologies, image }:
         </div>
       </CardContent>
       <CardFooter>
-        <Button variant="ghost" size="sm" className="w-full group/btn">
+        <Link href={href || "/"} className="w-full flex justify-center items-center" target='_blank'>
           Mehr Infos
           <ExternalLink className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-        </Button>
+        </Link>
       </CardFooter>
     </Card>
   )
