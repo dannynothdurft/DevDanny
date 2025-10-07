@@ -4,35 +4,43 @@ import nodemailer from 'nodemailer'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    
+
     // Validiere required fields
     if (!body.monthlyRevenue || !body.email || !body.projectType) {
       return NextResponse.json(
-        { error: 'Monatlicher Umsatz, Email und Projekt-Typ sind erforderlich' },
-        { status: 400 }
+        {
+          error: 'Monatlicher Umsatz, Email und Projekt-Typ sind erforderlich',
+        },
+        { status: 400 },
       )
     }
 
-        // Nodemailer Transporter konfigurieren
-          const transporter = nodemailer.createTransport({
-             host: process.env.SMTP_HOST,
-             port: Number(process.env.SMTP_PORT) || 587,
-             secure: Number(process.env.SMTP_PORT) === 465,
-             auth: {
-               user: process.env.SMTP_USER,
-               pass: process.env.SMTP_PASSWORD,
-             },
-          })
+    // Nodemailer Transporter konfigurieren
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT) || 587,
+      secure: Number(process.env.SMTP_PORT) === 465,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD,
+      },
+    })
 
     // Revenue Share spezifische Berechnungen
     const getRevenueShareRange = (revenue: string) => {
-      switch(revenue) {
-        case '0-500': return '30-40%'
-        case '500-2000': return '25-35%'
-        case '2000-5000': return '20-30%'
-        case '5000-10000': return '15-25%'
-        case '10000+': return '10-20%'
-        default: return '20-30%'
+      switch (revenue) {
+        case '0-500':
+          return '30-40%'
+        case '500-2000':
+          return '25-35%'
+        case '2000-5000':
+          return '20-30%'
+        case '5000-10000':
+          return '15-25%'
+        case '10000+':
+          return '10-20%'
+        default:
+          return '20-30%'
       }
     }
 
@@ -122,11 +130,17 @@ export async function POST(request: NextRequest) {
                   </div>
                   <div>
                     <strong>Ziel:</strong><br>
-                    ${body.growthGoals === '2x' ? '2x Revenue' : 
-                      body.growthGoals === '3x' ? '3x Revenue' : 
-                      body.growthGoals === '5x' ? '5x Revenue' : 
-                      body.growthGoals === '10x' ? '10x+ Revenue' : 
-                      'Signifikantes Wachstum'}
+                    ${
+                      body.growthGoals === '2x'
+                        ? '2x Revenue'
+                        : body.growthGoals === '3x'
+                          ? '3x Revenue'
+                          : body.growthGoals === '5x'
+                            ? '5x Revenue'
+                            : body.growthGoals === '10x'
+                              ? '10x+ Revenue'
+                              : 'Signifikantes Wachstum'
+                    }
                   </div>
                 </div>
               </div>
@@ -208,11 +222,17 @@ export async function POST(request: NextRequest) {
                 <div>
                   <strong>Ziel:</strong><br>
                   <span style="color: #ec4899; font-weight: bold;">
-                    ${body.growthGoals === '2x' ? '2x Revenue' : 
-                      body.growthGoals === '3x' ? '3x Revenue' : 
-                      body.growthGoals === '5x' ? '5x Revenue' : 
-                      body.growthGoals === '10x' ? '10x+ Revenue' : 
-                      'Signifikantes Wachstum'}
+                    ${
+                      body.growthGoals === '2x'
+                        ? '2x Revenue'
+                        : body.growthGoals === '3x'
+                          ? '3x Revenue'
+                          : body.growthGoals === '5x'
+                            ? '5x Revenue'
+                            : body.growthGoals === '10x'
+                              ? '10x+ Revenue'
+                              : 'Signifikantes Wachstum'
+                    }
                   </span>
                 </div>
               </div>
@@ -247,28 +267,27 @@ export async function POST(request: NextRequest) {
       `,
     })
 
-    return NextResponse.json({ 
+    return NextResponse.json({
       success: true,
       message: 'Revenue share analysis request submitted successfully',
-      estimatedShare: revenueShare
+      estimatedShare: revenueShare,
     })
-
   } catch (error) {
     console.error('Revenue API error:', error)
     return NextResponse.json(
-      { 
+      {
         error: 'Internal server error',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error.message : 'Unknown error',
       },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }
 
 // Optional: GET Method für Testing
 export async function GET() {
-  return NextResponse.json({ 
+  return NextResponse.json({
     message: 'Revenue API is working',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   })
 }

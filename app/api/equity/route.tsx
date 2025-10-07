@@ -4,25 +4,27 @@ import nodemailer from 'nodemailer'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    
+
     // Validiere required fields
     if (!body.ideaStage || !body.email || !body.projectDescription) {
       return NextResponse.json(
-        { error: 'Idee-Phase, Email und Projekt-Beschreibung sind erforderlich' },
-        { status: 400 }
+        {
+          error: 'Idee-Phase, Email und Projekt-Beschreibung sind erforderlich',
+        },
+        { status: 400 },
       )
     }
 
     // Nodemailer Transporter konfigurieren
-          const transporter = nodemailer.createTransport({
-             host: process.env.SMTP_HOST,
-             port: Number(process.env.SMTP_PORT) || 587,
-             secure: Number(process.env.SMTP_PORT) === 465,
-             auth: {
-               user: process.env.SMTP_USER,
-               pass: process.env.SMTP_PASSWORD,
-             },
-           })
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT) || 587,
+      secure: Number(process.env.SMTP_PORT) === 465,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD,
+      },
+    })
 
     // Email HTML Template für Equity Requests
     const emailHtml = `
@@ -187,27 +189,26 @@ export async function POST(request: NextRequest) {
       `,
     })
 
-    return NextResponse.json({ 
+    return NextResponse.json({
       success: true,
-      message: 'Equity partnership application submitted successfully' 
+      message: 'Equity partnership application submitted successfully',
     })
-
   } catch (error) {
     console.error('Equity API error:', error)
     return NextResponse.json(
-      { 
+      {
         error: 'Internal server error',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error.message : 'Unknown error',
       },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }
 
 // Optional: GET Method für Testing
 export async function GET() {
-  return NextResponse.json({ 
+  return NextResponse.json({
     message: 'Equity API is working',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   })
 }

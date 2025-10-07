@@ -4,16 +4,16 @@ import nodemailer from 'nodemailer'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    
+
     // Validiere required fields
     if (!body.name || !body.email || !body.message) {
       return NextResponse.json(
         { error: 'Name, Email und Nachricht sind erforderlich' },
-        { status: 400 }
+        { status: 400 },
       )
     }
 
-     // Create transporter with SMTP settings
+    // Create transporter with SMTP settings
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: Number(process.env.SMTP_PORT) || 587,
@@ -26,10 +26,10 @@ export async function POST(request: NextRequest) {
 
     // Topic mapping für bessere Lesbarkeit
     const topicMap: { [key: string]: string } = {
-      'partnership': '🚀 Partnerships (Equity/Revenue Share)',
-      'project': '💼 Projekt-Anfrage', 
-      'consulting': '🎯 Consulting & Strategy',
-      'other': '💬 Sonstiges'
+      partnership: '🚀 Partnerships (Equity/Revenue Share)',
+      project: '💼 Projekt-Anfrage',
+      consulting: '🎯 Consulting & Strategy',
+      other: '💬 Sonstiges',
     }
 
     // Email HTML Template für Contact Requests
@@ -211,26 +211,25 @@ export async function POST(request: NextRequest) {
       `,
     })
 
-    return NextResponse.json({ 
+    return NextResponse.json({
       success: true,
-      message: 'Contact form submitted successfully'
+      message: 'Contact form submitted successfully',
     })
-
   } catch (error) {
     console.error('Contact API error:', error)
     return NextResponse.json(
-      { 
+      {
         error: 'Internal server error',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error.message : 'Unknown error',
       },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }
 
 export async function GET() {
-  return NextResponse.json({ 
+  return NextResponse.json({
     message: 'Contact API is working',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   })
 }

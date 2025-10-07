@@ -1,10 +1,19 @@
-"use client"
+'use client'
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { useState, useEffect } from "react"
-import { Menu, X, Rocket, TrendingUp, Users, Gem, Sparkles, ChevronDown } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { useState, useEffect } from 'react'
+import {
+  Menu,
+  X,
+  Rocket,
+  TrendingUp,
+  Users,
+  Gem,
+  Sparkles,
+  ChevronDown,
+} from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 export default function Navigation() {
   const pathname = usePathname()
@@ -22,67 +31,71 @@ export default function Navigation() {
   }, [])
 
   const links = [
-    { 
-      href: "/", 
-      label: "Home",
-      icon: <Sparkles className="w-4 h-4" />
+    {
+      href: '/',
+      label: 'Home',
+      icon: <Sparkles className="w-4 h-4" />,
     },
-    { 
-      href: "/portfolio", 
-      label: "Case Studies",
-      icon: <Gem className="w-4 h-4" />
+    {
+      href: '/portfolio',
+      label: 'Case Studies',
+      icon: <Gem className="w-4 h-4" />,
     },
-    { 
-      href: "/about", 
-      label: "Über mich",
-      icon: <Rocket className="w-4 h-4" />
+    {
+      href: '/about',
+      label: 'Über mich',
+      icon: <Rocket className="w-4 h-4" />,
     },
   ]
 
   const partnershipLinks = [
-    { 
-      href: "/partnerships",  // ← DIESE SEITE FEHLTE!
-      label: "Partnerschaften Übersicht",
-      description: "Alle Modelle im Vergleich",
+    {
+      href: '/partnerships', // ← DIESE SEITE FEHLTE!
+      label: 'Partnerschaften Übersicht',
+      description: 'Alle Modelle im Vergleich',
       icon: <Users className="w-4 h-4" />,
-      color: "cyan"
+      color: 'cyan',
     },
-    { 
-      href: "/equity", 
-      label: "Equity Partnership",
-      description: "Tech-Co-Founder werden",
+    {
+      href: '/equity',
+      label: 'Equity Partnership',
+      description: 'Tech-Co-Founder werden',
       icon: <Users className="w-4 h-4" />,
-      color: "cyan"
+      color: 'cyan',
     },
-    { 
-      href: "/revenue", 
-      label: "Revenue Share",
-      description: "Umsatzbeteiligung",
+    {
+      href: '/revenue',
+      label: 'Revenue Share',
+      description: 'Umsatzbeteiligung',
       icon: <TrendingUp className="w-4 h-4" />,
-      color: "purple"
+      color: 'purple',
     },
-    { 
-      href: "/acquisition", 
-      label: "Project Acquisition", 
-      description: "Projekt verkaufen",
+    {
+      href: '/acquisition',
+      label: 'Project Acquisition',
+      description: 'Projekt verkaufen',
       icon: <Gem className="w-4 h-4" />,
-      color: "amber"
-    }
+      color: 'amber',
+    },
   ]
 
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/"
+    if (href === '/') return pathname === '/'
     return pathname.startsWith(href)
   }
 
-  const isPartnershipsActive = partnershipLinks.some(link => isActive(link.href))
+  const isPartnershipsActive = partnershipLinks.some((link) =>
+    isActive(link.href),
+  )
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled 
-        ? 'bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 shadow-2xl' 
-        : 'bg-transparent backdrop-blur-md'
-    }`}>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 shadow-2xl'
+          : 'bg-transparent backdrop-blur-md'
+      }`}
+    >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
@@ -101,7 +114,9 @@ export default function Navigation() {
               <span className="text-xl font-black bg-gradient-to-r from-cyan-400 via-purple-400 to-amber-400 bg-clip-text text-transparent group-hover:scale-105 transition-transform duration-300">
                 DevDanny
               </span>
-              <span className="text-xs text-gray-400 font-medium -mt-1">Tech Partner & Investor</span>
+              <span className="text-xs text-gray-400 font-medium -mt-1">
+                Tech Partner & Investor
+              </span>
             </div>
           </Link>
 
@@ -112,41 +127,45 @@ export default function Navigation() {
                 key={link.href}
                 href={link.href}
                 className={`group relative flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
-                  isActive(link.href) 
-                    ? 'text-cyan-400 bg-cyan-500/10 border border-cyan-500/20' 
+                  isActive(link.href)
+                    ? 'text-cyan-400 bg-cyan-500/10 border border-cyan-500/20'
                     : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
                 }`}
               >
-                <div className={`transition-transform duration-300 ${
-                  isActive(link.href) ? 'scale-110' : 'group-hover:scale-110'
-                }`}>
+                <div
+                  className={`transition-transform duration-300 ${
+                    isActive(link.href) ? 'scale-110' : 'group-hover:scale-110'
+                  }`}
+                >
                   {link.icon}
                 </div>
                 <span>{link.label}</span>
-                
+
                 {/* Active indicator */}
                 {isActive(link.href) && (
                   <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full animate-pulse"></div>
                 )}
               </Link>
             ))}
-            
+
             {/* Partnerships Dropdown */}
             <div className="relative">
               <button
                 onClick={() => setIsPartnershipsOpen(!isPartnershipsOpen)}
                 className={`group flex items-center space-x-2 px-4 py-2 rounded-xl text-sm font-semibold transition-all duration-300 ${
                   isPartnershipsActive
-                    ? 'text-cyan-400 bg-cyan-500/10 border border-cyan-500/20' 
+                    ? 'text-cyan-400 bg-cyan-500/10 border border-cyan-500/20'
                     : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
                 }`}
               >
                 <Users className="w-4 h-4" />
                 <span>Partnerschaften</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${
-                  isPartnershipsOpen ? 'rotate-180' : ''
-                }`} />
-                
+                <ChevronDown
+                  className={`w-4 h-4 transition-transform duration-300 ${
+                    isPartnershipsOpen ? 'rotate-180' : ''
+                  }`}
+                />
+
                 {/* Active indicator */}
                 {isPartnershipsActive && (
                   <div className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-cyan-400 rounded-full animate-pulse"></div>
@@ -168,19 +187,25 @@ export default function Navigation() {
                             : 'hover:bg-slate-700/50'
                         }`}
                       >
-                        <div className={`w-10 h-10 rounded-lg flex items-center justify-center mt-1 ${
-                          link.color === 'cyan' ? 'bg-cyan-500/20 text-cyan-400' :
-                          link.color === 'purple' ? 'bg-purple-500/20 text-purple-400' :
-                          'bg-amber-500/20 text-amber-400'
-                        } group-hover:scale-110 transition-transform duration-300`}>
+                        <div
+                          className={`w-10 h-10 rounded-lg flex items-center justify-center mt-1 ${
+                            link.color === 'cyan'
+                              ? 'bg-cyan-500/20 text-cyan-400'
+                              : link.color === 'purple'
+                                ? 'bg-purple-500/20 text-purple-400'
+                                : 'bg-amber-500/20 text-amber-400'
+                          } group-hover:scale-110 transition-transform duration-300`}
+                        >
                           {link.icon}
                         </div>
                         <div className="flex-1">
-                          <div className={`font-semibold ${
-                            isActive(link.href) 
-                              ? 'text-cyan-400' 
-                              : 'text-white group-hover:text-gray-200'
-                          }`}>
+                          <div
+                            className={`font-semibold ${
+                              isActive(link.href)
+                                ? 'text-cyan-400'
+                                : 'text-white group-hover:text-gray-200'
+                            }`}
+                          >
                             {link.label}
                           </div>
                           <div className="text-sm text-gray-400 mt-1">
@@ -193,16 +218,21 @@ export default function Navigation() {
                       </Link>
                     ))}
                   </div>
-                  
+
                   {/* Dropdown CTA */}
                   <div className="mt-3 p-3 bg-slate-900/50 rounded-xl border border-slate-700">
-                    <p className="text-sm text-gray-400 mb-2">Unsicher welches Modell?</p>
-                    <Button 
-                      asChild 
-                      size="sm" 
+                    <p className="text-sm text-gray-400 mb-2">
+                      Unsicher welches Modell?
+                    </p>
+                    <Button
+                      asChild
+                      size="sm"
                       className="w-full bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 border-0 text-white"
                     >
-                      <Link href="/contact" onClick={() => setIsPartnershipsOpen(false)}>
+                      <Link
+                        href="/contact"
+                        onClick={() => setIsPartnershipsOpen(false)}
+                      >
                         <Sparkles className="w-4 h-4 mr-2" />
                         Kostenlose Beratung
                       </Link>
@@ -211,10 +241,10 @@ export default function Navigation() {
                 </div>
               )}
             </div>
-            
+
             {/* CTA Button */}
-            <Button 
-              asChild 
+            <Button
+              asChild
               size="sm"
               className="ml-2 bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 border-0 text-white hover-glow-cyan group"
             >
@@ -229,8 +259,8 @@ export default function Navigation() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className={`lg:hidden p-3 rounded-xl transition-all duration-300 ${
-              isOpen 
-                ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20' 
+              isOpen
+                ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20'
                 : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
             }`}
             aria-label="Toggle menu"
@@ -254,13 +284,17 @@ export default function Navigation() {
                       : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
                   }`}
                 >
-                  <div className={`transition-transform duration-300 ${
-                    isActive(link.href) ? 'scale-110' : 'group-hover:scale-110'
-                  }`}>
+                  <div
+                    className={`transition-transform duration-300 ${
+                      isActive(link.href)
+                        ? 'scale-110'
+                        : 'group-hover:scale-110'
+                    }`}
+                  >
                     {link.icon}
                   </div>
                   <span>{link.label}</span>
-                  
+
                   {isActive(link.href) && (
                     <div className="ml-auto w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></div>
                   )}
@@ -284,15 +318,23 @@ export default function Navigation() {
                           : 'text-gray-300 hover:text-white hover:bg-slate-800/50'
                       }`}
                     >
-                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${
-                        link.color === 'cyan' ? 'bg-cyan-500/20 text-cyan-400' :
-                        link.color === 'purple' ? 'bg-purple-500/20 text-purple-400' :
-                        'bg-amber-500/20 text-amber-400'
-                      } group-hover:scale-110 transition-transform duration-300`}>
+                      <div
+                        className={`w-8 h-8 rounded-lg flex items-center justify-center ${
+                          link.color === 'cyan'
+                            ? 'bg-cyan-500/20 text-cyan-400'
+                            : link.color === 'purple'
+                              ? 'bg-purple-500/20 text-purple-400'
+                              : 'bg-amber-500/20 text-amber-400'
+                        } group-hover:scale-110 transition-transform duration-300`}
+                      >
                         {link.icon}
                       </div>
                       <div className="flex-1">
-                        <div className={isActive(link.href) ? 'text-cyan-400' : 'text-white'}>
+                        <div
+                          className={
+                            isActive(link.href) ? 'text-cyan-400' : 'text-white'
+                          }
+                        >
                           {link.label}
                         </div>
                         <div className="text-xs text-gray-400 mt-1">
@@ -303,14 +345,18 @@ export default function Navigation() {
                   ))}
                 </div>
               </div>
-              
+
               {/* Mobile CTA Button */}
-              <Button 
-                asChild 
+              <Button
+                asChild
                 size="sm"
                 className="mt-4 bg-gradient-to-r from-cyan-600 to-purple-600 hover:from-cyan-500 hover:to-purple-500 border-0 text-white hover-glow-cyan group mx-4"
               >
-                <Link href="/contact" onClick={() => setIsOpen(false)} className="flex items-center justify-center space-x-2 py-3">
+                <Link
+                  href="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="flex items-center justify-center space-x-2 py-3"
+                >
                   <Rocket className="w-4 h-4 group-hover:animate-bounce" />
                   <span>Kontakt aufnehmen</span>
                 </Link>
@@ -322,7 +368,7 @@ export default function Navigation() {
 
       {/* Background Blur Overlay when mobile menu or dropdown is open */}
       {(isOpen || isPartnershipsOpen) && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[-1] lg:hidden"
           onClick={() => {
             setIsOpen(false)

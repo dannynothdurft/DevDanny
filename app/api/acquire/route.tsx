@@ -4,25 +4,25 @@ import nodemailer from 'nodemailer'
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    
+
     // Validiere required fields
     if (!body.projectType || !body.monthlyRevenue) {
       return NextResponse.json(
         { error: 'Projekt-Typ und Umsatz sind erforderlich' },
-        { status: 400 }
+        { status: 400 },
       )
     }
 
     // Nodemailer Transporter konfigurieren
-      const transporter = nodemailer.createTransport({
-         host: process.env.SMTP_HOST,
-         port: Number(process.env.SMTP_PORT) || 587,
-         secure: Number(process.env.SMTP_PORT) === 465,
-         auth: {
-           user: process.env.SMTP_USER,
-           pass: process.env.SMTP_PASSWORD,
-         },
-       })
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT) || 587,
+      secure: Number(process.env.SMTP_PORT) === 465,
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD,
+      },
+    })
 
     // Email HTML Template
     const emailHtml = `
@@ -130,27 +130,26 @@ export async function POST(request: NextRequest) {
       })
     }
 
-    return NextResponse.json({ 
+    return NextResponse.json({
       success: true,
-      message: 'Acquisition request submitted successfully' 
+      message: 'Acquisition request submitted successfully',
     })
-
   } catch (error) {
     console.error('Acquisition API error:', error)
     return NextResponse.json(
-      { 
+      {
         error: 'Internal server error',
-        details: error instanceof Error ? error.message : 'Unknown error'
+        details: error instanceof Error ? error.message : 'Unknown error',
       },
-      { status: 500 }
+      { status: 500 },
     )
   }
 }
 
 // Optional: GET Method für Testing
 export async function GET() {
-  return NextResponse.json({ 
+  return NextResponse.json({
     message: 'Acquisition API is working',
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
   })
 }

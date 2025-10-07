@@ -1,5 +1,5 @@
 // components/conditional-analytics.tsx
-"use client"
+'use client'
 import { Analytics as VercelAnalytics } from '@vercel/analytics/react'
 import { useEffect, useState } from 'react'
 
@@ -9,7 +9,7 @@ export default function ConditionalAnalytics() {
   useEffect(() => {
     // Prüfe Cookie-Einstellungen beim Mount
     const cookieConsent = localStorage.getItem('cookie-consent')
-    
+
     if (cookieConsent) {
       const preferences = JSON.parse(cookieConsent)
       setAllowAnalytics(preferences.analytics)

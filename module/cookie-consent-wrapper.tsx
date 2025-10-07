@@ -1,7 +1,7 @@
 // components/cookie-consent-wrapper.tsx
-"use client"
-import { useEffect, useState } from "react"
-import CookieConsent, { CookiePreferences } from "@/module/CookieConsent"
+'use client'
+import { useEffect, useState } from 'react'
+import CookieConsent, { CookiePreferences } from '@/module/CookieConsent'
 
 export default function CookieConsentWrapper() {
   const [isClient, setIsClient] = useState(false)
@@ -12,13 +12,13 @@ export default function CookieConsentWrapper() {
 
   const handleAccept = (preferences: CookiePreferences) => {
     console.log('Cookie preferences accepted:', preferences)
-    
+
     // Analytics basierend auf Präferenzen initialisieren
     if (preferences.analytics) {
       // Hier würdest du Google Analytics, Vercel Analytics etc. initialisieren
       initializeAnalytics()
     }
-    
+
     if (preferences.marketing) {
       initializeMarketing()
     }
@@ -47,10 +47,5 @@ export default function CookieConsentWrapper() {
 
   if (!isClient) return null
 
-  return (
-    <CookieConsent 
-      onAccept={handleAccept}
-      onReject={handleReject}
-    />
-  )
+  return <CookieConsent onAccept={handleAccept} onReject={handleReject} />
 }
