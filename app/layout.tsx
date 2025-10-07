@@ -1,11 +1,12 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { Suspense } from "react"
+import CookieConsentWrapper from "@/module/cookie-consent-wrapper"
+import ConditionalAnalytics from "@/module/conditional-analytics"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,8 +32,9 @@ export default function RootLayout({
           <Navigation />
           <main className="min-h-screen">{children}</main>
           <Footer />
+          <CookieConsentWrapper />
         </Suspense>
-        <Analytics />
+        <ConditionalAnalytics />
       </body>
     </html>
   )

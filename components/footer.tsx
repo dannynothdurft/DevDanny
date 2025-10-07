@@ -184,9 +184,9 @@ const Footer = () => {
             <div className="text-center lg:text-right">
               <p className="text-sm text-gray-500 flex items-center justify-center lg:justify-end space-x-2">
                 <span>Made with</span>
-                <div className="w-4 h-4 text-red-400 animate-pulse">❤️</div>
+                <span className="w-4 h-4 text-red-400 animate-pulse">❤️</span>
                 <span>and</span>
-                <div className="w-4 h-4 text-cyan-400">⚡</div>
+                <span className="w-4 h-4 text-cyan-400">⚡</span>
               </p>
             </div>
           </div>
