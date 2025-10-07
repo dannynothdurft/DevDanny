@@ -14,6 +14,7 @@ import {
 const SuccessMetricsSection = () => {
   const [isVisible, setIsVisible] = useState(false)
   const [countedMetrics, setCountedMetrics] = useState<number[]>([])
+  const [isMounted, setIsMounted] = useState(false)
   const sectionRef = useRef<HTMLDivElement>(null)
 
   const successMetrics = useMemo(
@@ -75,6 +76,10 @@ const SuccessMetricsSection = () => {
     ],
     [],
   )
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -140,20 +145,22 @@ const SuccessMetricsSection = () => {
       </div>
 
       {/* Floating Particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(20)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute w-1 h-1 bg-green-400/30 rounded-full animate-float"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${10 + Math.random() * 10}s`,
-            }}
-          />
-        ))}
-      </div>
+      {isMounted && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {[...Array(20)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-1 h-1 bg-green-400/30 rounded-full animate-float"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${10 + Math.random() * 10}s`,
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Enhanced Header */}
@@ -180,7 +187,6 @@ const SuccessMetricsSection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6 max-w-7xl mx-auto">
           {successMetrics.map((item, index) => (
             <div key={index} className="group relative">
-              {/* Hover Glow Effect */}
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${item.color} rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
               />
@@ -188,14 +194,12 @@ const SuccessMetricsSection = () => {
               <div
                 className={`relative p-6 ${item.bgColor} border ${item.borderColor} rounded-2xl backdrop-blur-sm transition-all duration-500 group-hover:scale-105 group-hover:-translate-y-2 h-full flex flex-col items-center text-center`}
               >
-                {/* Animated Icon */}
                 <div
                   className={`w-14 h-14 bg-gradient-to-br ${item.color} rounded-2xl flex items-center justify-center mb-4 text-white group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg`}
                 >
                   {item.icon}
                 </div>
 
-                {/* Animated Number */}
                 <div
                   className={`text-3xl font-black bg-gradient-to-r ${item.color} bg-clip-text text-transparent mb-2 transition-all duration-300 min-h-[2.5rem] flex items-center justify-center`}
                 >
@@ -203,12 +207,10 @@ const SuccessMetricsSection = () => {
                   {item.suffix}
                 </div>
 
-                {/* Label */}
                 <div className="text-sm text-gray-300 leading-tight group-hover:text-white transition-colors duration-300">
                   {item.label}
                 </div>
 
-                {/* Progress Bar - Only show during animation */}
                 {isVisible && countedMetrics[index] < item.metric && (
                   <div className="w-full bg-gray-700 rounded-full h-1 mt-3 overflow-hidden">
                     <div
@@ -220,7 +222,6 @@ const SuccessMetricsSection = () => {
                   </div>
                 )}
 
-                {/* Success Badge - Shows when animation completes */}
                 {isVisible && countedMetrics[index] >= item.metric && (
                   <div className="absolute -top-2 -right-2">
                     <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center border-2 border-slate-900">
@@ -230,7 +231,6 @@ const SuccessMetricsSection = () => {
                 )}
               </div>
 
-              {/* Connection Lines for Desktop */}
               {index < successMetrics.length - 1 && (
                 <>
                   <div className="hidden xl:block absolute top-1/2 -right-3 w-6 h-0.5 bg-gradient-to-r from-gray-600 to-transparent">

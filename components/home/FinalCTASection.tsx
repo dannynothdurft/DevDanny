@@ -16,7 +16,12 @@ import { Button } from '@/components/ui/button'
 const FinalCTASection = () => {
   const [isVisible, setIsVisible] = useState(false)
   const ctaRef = useRef<HTMLDivElement>(null)
+  const [isMounted, setIsMounted] = useState(false)
   const [hoveredButton, setHoveredButton] = useState<string | null>(null)
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, [])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -64,39 +69,42 @@ const FinalCTASection = () => {
       </div>
 
       {/* Floating Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating Stars */}
-        {[...Array(8)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute text-cyan-400/30 animate-float"
-            style={{
-              left: `${10 + Math.random() * 80}%`,
-              top: `${10 + Math.random() * 80}%`,
-              animationDelay: `${Math.random() * 5}s`,
-              animationDuration: `${8 + Math.random() * 8}s`,
-            }}
-          >
-            <Star className="w-3 h-3" />
-          </div>
-        ))}
+      {isMounted && (
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          {/* Floating Stars */}
+          {[...Array(8)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute text-cyan-400/30 animate-float"
+              style={{
+                left: `${10 + Math.random() * 80}%`,
+                top: `${10 + Math.random() * 80}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                animationDuration: `${8 + Math.random() * 8}s`,
+              }}
+            >
+              <Star className="w-3 h-3" />
+            </div>
+          ))}
 
-        {/* Floating Sparks */}
-        {[...Array(6)].map((_, i) => (
-          <div
-            key={i}
-            className="absolute text-amber-400/40 animate-float"
-            style={{
-              left: `${5 + Math.random() * 90}%`,
-              top: `${5 + Math.random() * 90}%`,
-              animationDelay: `${Math.random() * 4}s`,
-              animationDuration: `${6 + Math.random() * 6}s`,
-            }}
-          >
-            <Sparkles className="w-2 h-2" />
-          </div>
-        ))}
-      </div>
+          {/* Floating Sparks */}
+
+          {[...Array(6)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute text-amber-400/40 animate-float"
+              style={{
+                left: `${5 + Math.random() * 90}%`,
+                top: `${5 + Math.random() * 90}%`,
+                animationDelay: `${Math.random() * 4}s`,
+                animationDuration: `${6 + Math.random() * 6}s`,
+              }}
+            >
+              <Sparkles className="w-2 h-2" />
+            </div>
+          ))}
+        </div>
+      )}
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div
