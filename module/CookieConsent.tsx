@@ -44,13 +44,20 @@ export default function CookieConsent({
     marketing: false,
     preferences: false,
   })
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    const hasConsent = localStorage.getItem('cookie-consent')
-    if (!hasConsent) {
-      setTimeout(() => setIsVisible(true), 1000)
-    }
+    setIsMounted(true)
   }, [])
+
+  useEffect(() => {
+    if (isMounted) {
+      const hasConsent = localStorage.getItem('cookie-consent')
+      if (!hasConsent) {
+        setTimeout(() => setIsVisible(true), 1000)
+      }
+    }
+  }, [isMounted])
 
   const handleAcceptAll = () => {
     const allAccepted = {
@@ -138,6 +145,8 @@ export default function CookieConsent({
       color: 'text-green-400',
     },
   ]
+
+  if (!isMounted) return null
 
   if (!isVisible) return null
 

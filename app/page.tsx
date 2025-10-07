@@ -14,7 +14,7 @@ const HomePage = () => {
       <PropositionsSection />
       <ProcessSection />
       <SucceessMetricsSection />
-      <FinalCTASection />
+      {/* <FinalCTASection />*/}
     </>
   )
 }
