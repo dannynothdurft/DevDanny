@@ -79,7 +79,7 @@ const HeroSection = () => {
       </div>
 
       {/* Enhanced Floating Tech Elements with Hover */}
-      <div className="floating-element absolute top-20 left-10 animate-float">
+      <div className="floating-element absolute top-30 left-10 animate-float">
         <div className="group relative">
           <div className="w-12 h-12 bg-cyan-500/20 rounded-lg border border-cyan-500/30 backdrop-blur-sm flex items-center justify-center transition-all duration-300 group-hover:bg-cyan-500/30 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/25">
             <Code className="w-6 h-6 text-cyan-400 transition-transform group-hover:scale-110" />
