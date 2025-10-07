@@ -10,7 +10,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-slate-800 bg-slate-900/95 backdrop-blur-xl mt-20 relative overflow-hidden">
+    <footer className="border-t border-slate-800 bg-slate-900/95 backdrop-blur-xl relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute bottom-0 left-0 w-72 h-72 bg-cyan-500/5 rounded-full blur-3xl"></div>
