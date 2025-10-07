@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
-export default function ImpressumPage() {
+const ImpressumPage = () => {
   return (
     <div className="pt-24 pb-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
@@ -93,3 +93,5 @@ export default function ImpressumPage() {
     </div>
   )
 }
+
+export default ImpressumPage
