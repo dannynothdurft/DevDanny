@@ -24,7 +24,7 @@ const PropositionsSection = () => {
       title: "App Acquisition", 
       description: "Verkaufe dein Web-Projekt an mich. Ich optimiere, skaliere und führe es weiter - fairer Deal, reibungsloser Übergang.",
       cta: "Projekt verkaufen",
-      href: "/acquire",
+      href: "/acquisition",
       features: ["Sofortige Auszahlung", "Fairer Bewertungsprozess", "Reibungslose Übergabe", "Nachhaltige Weiterentwicklung"],
       gradient: "from-purple-500/20 to-pink-500/20",
       color: "purple"

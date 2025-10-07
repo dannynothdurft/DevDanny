@@ -217,7 +217,7 @@ const deal: Partnership = {
           </Button>
           
           <Button asChild size="lg" variant="outline" className="relative border-2 border-amber-400 text-amber-400 hover:bg-amber-400 hover:text-white text-lg py-6 px-8 rounded-2xl group transform hover:scale-105 transition-all duration-300 overflow-hidden">
-            <Link href="/acquire">
+            <Link href="/acquisition">
               <div className="absolute inset-0 bg-amber-400/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               <TrendingUp className="mr-3 w-6 h-6 relative z-10 group-hover:scale-110 transition-transform" />
               <span className="relative z-10">💰 Projekt verkaufen</span>
