@@ -191,7 +191,7 @@ const FinalCTASection = () => {
 
                   <Rocket className="mr-3 w-5 h-5 relative z-10 group-hover:animate-bounce" />
                   <span className="relative z-10">
-                    🚀 Jetzt Strategie-Gespräch buchen
+                    Jetzt Strategie-Gespräch <br className="sm:hidden" /> buchen
                   </span>
                   <ArrowRight className="ml-3 w-5 h-5 relative z-10 group-hover:translate-x-2 transition-transform" />
                 </Link>

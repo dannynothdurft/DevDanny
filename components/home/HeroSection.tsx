@@ -95,7 +95,7 @@ const HeroSection = () => {
   }, [])
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-950 cursor-default">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-950 cursor-default pt-[40px] sm:pt-0">
       {/* Enhanced Interactive Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
 
@@ -109,7 +109,7 @@ const HeroSection = () => {
       </div>
 
       {/* Enhanced Floating Tech Elements with Hover */}
-      <div className="floating-element absolute top-30 left-10 animate-float">
+      <div className="floating-element absolute top-30 left-10 animate-float hidden md:block">
         <div className="group relative">
           <div className="w-12 h-12 bg-cyan-500/20 rounded-lg border border-cyan-500/30 backdrop-blur-sm flex items-center justify-center transition-all duration-300 group-hover:bg-cyan-500/30 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-cyan-500/25">
             <Code className="w-6 h-6 text-cyan-400 transition-transform group-hover:scale-110" />
@@ -123,7 +123,7 @@ const HeroSection = () => {
       </div>
 
       <div
-        className="floating-element absolute top-40 right-20 animate-float"
+        className="floating-element absolute top-40 right-20 animate-float hidden md:block"
         style={{ animationDelay: '1s' }}
       >
         <div className="group relative">
@@ -139,7 +139,7 @@ const HeroSection = () => {
       </div>
 
       <div
-        className="floating-element absolute bottom-32 left-20 animate-float"
+        className="floating-element absolute bottom-32 left-20 animate-float hidden md:block"
         style={{ animationDelay: '2s' }}
       >
         <div className="group relative">
@@ -156,7 +156,7 @@ const HeroSection = () => {
 
       {/* New Floating Element */}
       <div
-        className="floating-element absolute bottom-20 right-32 animate-float"
+        className="floating-element absolute bottom-20 right-32 animate-float hidden md:block"
         style={{ animationDelay: '3s' }}
       >
         <div className="group relative">
@@ -311,7 +311,7 @@ const deal: Partnership = {
         </div>
 
         {/* Enhanced Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 group cursor-pointer">
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 group cursor-pointer hidden md:block">
           <div className="w-6 h-10 border-2 border-cyan-400 rounded-full flex justify-center transition-all duration-300 group-hover:border-cyan-300 group-hover:scale-110">
             <div className="w-1 h-3 bg-cyan-400 rounded-full mt-2 animate-bounce group-hover:bg-cyan-300" />
           </div>
