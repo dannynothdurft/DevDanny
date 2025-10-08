@@ -95,7 +95,7 @@ const HeroSection = () => {
   }, [])
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-950 cursor-default pt-[40px] sm:pt-0">
+    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-950 cursor-default pb-[30px] pt-[100px] sm:pt-0 sm:pb-0">
       {/* Enhanced Interactive Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_50%,black,transparent)]" />
 
