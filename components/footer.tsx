@@ -1,5 +1,7 @@
 'use client'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   Github,
   Linkedin,
@@ -11,7 +13,6 @@ import {
   Zap,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { useState } from 'react'
 
 const Footer = () => {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null)
@@ -36,8 +37,9 @@ const Footer = () => {
               className="group inline-flex items-center space-x-3 mb-4"
             >
               <div className="relative">
-                <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <span className="text-white font-bold text-lg">DD</span>
+                <div className="w-10 h-10 bg-gradient-to-br from-cyan-500/30 to-purple-600/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                  <Image src="/icons/logo.svg" alt='DevDanny Logo' width={25} height={25}/>
+                  
                 </div>
                 <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl blur opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
               </div>

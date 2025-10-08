@@ -1,8 +1,8 @@
 'use client'
-
-import Link from 'next/link'
+import React, { useState, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
-import { useState, useEffect } from 'react'
+import Image from 'next/image'
+import Link from 'next/link'
 import {
   Menu,
   X,
@@ -105,8 +105,8 @@ export default function Navigation() {
             onClick={() => setIsOpen(false)}
           >
             <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <span className="text-white font-bold text-lg">DD</span>
+              <div className="w-10 h-10 bg-gradient-to-br from-cyan-500/30 to-purple-600/30 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                <Image src="/icons/logo.svg" alt='DevDanny Logo' width={25} height={25}/>
               </div>
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-xl blur opacity-30 group-hover:opacity-70 transition-opacity duration-300"></div>
             </div>
