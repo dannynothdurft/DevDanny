@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import {
@@ -328,7 +329,12 @@ const AboutPage = () => {
               <div className="bg-slate-800/50 border border-slate-700 rounded-2xl p-8 backdrop-blur-sm">
                 <div className="text-center mb-6">
                   <div className="w-24 h-24 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center mx-auto mb-4 text-white">
-                    <span className="text-2xl font-bold">DD</span>
+                    <Image
+                      src="/lucy.png"
+                      alt="Lucy the Fuchs"
+                      width={100}
+                      height={100}
+                    />
                   </div>
                   <h3 className="text-2xl font-bold text-white mb-2">Danny</h3>
                   <p className="text-purple-300 font-semibold">
