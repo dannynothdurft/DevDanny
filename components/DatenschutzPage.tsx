@@ -283,8 +283,7 @@ const DatenschutzPage = () => {
               <div className="text-gray-300 space-y-2">
                 <p>Danny Nothdurft</p>
                 <p>DevDanny</p>
-                <p>Tribünenweg 32</p>
-                <p>22111 Hamburg</p>
+                <p>Hamburg</p>
                 <p>Deutschland</p>
               </div>
             </div>

@@ -29,8 +29,8 @@ const ImpressumPage = () => {
     {
       icon: <MapPin className="w-5 h-5" />,
       label: 'Adresse',
-      value: 'Tribünenweg 32, 22111 Hamburg',
-      href: 'https://maps.google.com/?q=Tribünenweg+32+22111+Hamburg',
+      value: 'Hamburg',
+      href: 'https://maps.google.com/?q=Hamburg',
       color: 'text-amber-400',
     },
   ]
@@ -114,9 +114,7 @@ const ImpressumPage = () => {
                   <br />
                   DevDanny
                   <br />
-                  Tribünenweg 32
-                  <br />
-                  22111 Hamburg
+                  Hamburg
                   <br />
                   Deutschland
                 </p>
@@ -181,9 +179,7 @@ const ImpressumPage = () => {
                 <p className="text-gray-300 leading-relaxed">
                   Danny Nothdurft
                   <br />
-                  Tribünenweg 32
-                  <br />
-                  22111 Hamburg
+                  Hamburg
                 </p>
               </div>
             </div>
